@@ -12,9 +12,6 @@ interface ApiService {
     @GET("posts")
     suspend fun getPost(): List<PostResultItem>
 
-
-
-
     @GET("api/home")
     suspend fun getPostHome(
         @Header("Authorization") token: String

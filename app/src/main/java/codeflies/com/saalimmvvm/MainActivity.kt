@@ -6,13 +6,11 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import codeflies.com.saalimmvvm.adapter.MainAdapter
+import codeflies.com.saalimmvvm.adapter.MaintainenceAdapter
 import codeflies.com.saalimmvvm.adapter.ParentAdapter
 import codeflies.com.saalimmvvm.adapter.SliderAdapter
 import codeflies.com.saalimmvvm.databinding.ActivityMainBinding
-import codeflies.com.saalimmvvm.model.responseClass.home.GroceryItemsArray
 import codeflies.com.saalimmvvm.model.responseClass.home.HomeResponse
-import codeflies.com.saalimmvvm.model.responseClass.home.TopBrandArray
-import codeflies.com.saalimmvvm.model.responseClass.home.TopCategoryArray
 import codeflies.com.saalimmvvm.network.ApiClient
 import codeflies.com.saalimmvvm.repository.MainRepository
 import codeflies.com.saalimmvvm.viewmodel.MainViewModel
@@ -56,15 +54,13 @@ class MainActivity : AppCompatActivity() {
             response.add(it)
             val adapter=ParentAdapter(response,this)
             binding.rvTopCategoryArray.adapter=adapter
-
-
-
-
         }
 
         // Handle other observed data as needed
         viewModel.postdataMaintainresponse.observe(this) { response ->
             Log.e("postdataMaintainresponseMainactivity", response.toString())
+            val adapter=MaintainenceAdapter(response,this)
+            binding.recyclerMaintainence.adapter=adapter
         }
 
         viewModel.loading.observe(this) { isLoading ->

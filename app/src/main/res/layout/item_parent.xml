@@ -1,28 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?>
+<!-- item_parent.xml -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/parentTitleTextView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textStyle="bold"
         android:padding="8dp"
-        android:background="@android:color/darker_gray"
-        android:textColor="@android:color/white" />
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/childRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:spanCount="4"
-       tools:listitem="@layout/item_child"
-        />
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager" />
+
+    <!-- Container to dynamically add RecyclerViews for child items -->
+    <LinearLayout
+        android:id="@+id/childContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
+
 
 </LinearLayout>
