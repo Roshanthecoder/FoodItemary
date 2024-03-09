@@ -1,0 +1,13 @@
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/login"
+            android:title="login" />
+        <item
+            android:id="@+id/detail"
+            android:title="detail" />
+
+        <!-- Add more menu items as needed -->
+    </group>
+</menu>
