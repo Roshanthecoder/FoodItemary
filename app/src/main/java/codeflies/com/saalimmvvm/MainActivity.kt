@@ -10,6 +10,7 @@ import codeflies.com.saalimmvvm.adapter.ParentAdapter
 import codeflies.com.saalimmvvm.adapter.SliderAdapter
 import codeflies.com.saalimmvvm.databinding.ActivityMainBinding
 import codeflies.com.saalimmvvm.model.responseClass.home.GroceryItemsArray
+import codeflies.com.saalimmvvm.model.responseClass.home.HomeResponse
 import codeflies.com.saalimmvvm.model.responseClass.home.TopBrandArray
 import codeflies.com.saalimmvvm.model.responseClass.home.TopCategoryArray
 import codeflies.com.saalimmvvm.network.ApiClient
@@ -51,19 +52,11 @@ class MainActivity : AppCompatActivity() {
             // Set up slider adapter
             sliderAdapter = SliderAdapter(this, it.sliderArray)
             binding.viewPager.adapter = sliderAdapter
+            val response= ArrayList<HomeResponse>()
+            response.add(it)
+            val adapter=ParentAdapter(response,this)
+            binding.rvTopCategoryArray.adapter=adapter
 
-            val topCategoryItems = it.topCategoryArray.map { item ->
-                TopCategoryArray(item.id, item.name, item.image)
-            }
-            val topBrandItems = it.topBrandArray.map { item ->
-                TopBrandArray(item.id, item.name, item.image)
-            }
-            val groceryItems = it.groceryItemsArray.map { item ->
-                GroceryItemsArray(item.id, item.name, item.image)
-            }
-
-            val adapter = ParentAdapter(this@MainActivity, topCategoryItems, topBrandItems, groceryItems)
-            binding.rvTopCategoryArray.adapter = adapter
 
 
 
